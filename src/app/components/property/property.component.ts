@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IProperty } from 'src/app/interface/property';
 
 @Component({
   selector: 'app-property',
@@ -6,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./property.component.scss']
 })
 export class PropertyComponent {
-  @Input() property:any
+  @Input() property!:IProperty;
 
 }

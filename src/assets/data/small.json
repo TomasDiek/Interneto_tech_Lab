@@ -1,26 +1,42 @@
 [
     {
       "id":1,
+      "sellRent":2,
       "adress":"Vileikos g.8",
       "type":"House",
-      "price":120000
+      "price":120000,
+      "image":"house1"
     },
     {
       "id":2,
+      "sellRent":1,
       "adress":"Architektų g. 152",
       "type":"House",
-      "price":24000
+      "price":24000,
+      "image":"house4"
     },
     {
       "id":3,
+      "sellRent":2,
       "adress":"Šilutės pl. 56",
       "type":"House",
-      "price":150000
+      "price":150000,
+      "image":"house2"
     },
     {
       "id":4,
-      "adress":" Plento g. 3",
+      "sellRent":1,
+      "adress":"Plento g. 3",
       "type":"House",
-      "price":50000
-    }
+      "price":50000,
+      "image":"house3"
+    },
+    {
+        "id":5,
+        "sellRent":2,
+        "adress":"Kauno g. 113b",
+        "type":"House",
+        "price":50000
+
+      }
   ]

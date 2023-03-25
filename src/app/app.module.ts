@@ -18,7 +18,7 @@ import { PasswordResetPageComponent } from './pages/password-reset-page/password
 import { PasswordResetComponentComponent } from './components/password-reset-component/password-reset-component.component';
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { HomeComponentComponent } from './components/home-component/home-component.component';
-import { BuyComponentComponent } from './components/buy-component/buy-component.component';
+import { BuyComponentComponent } from './components/property-list-component/buy-component.component';
 import { RentComponentComponent } from './components/rent-component/rent-component.component';
 import { NotFoundComponentComponent } from './components/not-found-component/not-found-component.component';
 import { ViewComponentComponent } from './components/view-component/view-component.component';
@@ -32,6 +32,7 @@ import { PropertyComponent } from './components/property/property.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PropertyService } from './services/property.service';
+import { CreateListingComponent } from './components/create-listing/create-listing.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { PropertyService } from './services/property.service';
     SignUpComponentComponent,
     EntryPageComponentComponent,
     HeaderComponent,
-    PropertyComponent
+    PropertyComponent,
+    CreateListingComponent
   ],
   imports: [
     BrowserModule,
