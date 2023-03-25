@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="shadow-lg col-sm-4 p-3">
-        <app-property></app-property>
+    <div *ngFor="let property of properties" class="shadow-lg col-sm-4 p-3">
+        <app-property [property]="property"></app-property>
     </div>
 </div>

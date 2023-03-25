@@ -11,6 +11,7 @@ import { BuyPageComponent } from './pages/buy-page/buy-page.component';
 import { NotFoundPageComponent } from './pages/notFoundPage/not-foun-page.component';
 import { CreateOrEditPageComponent } from './pages/create-or-edit-page/create-or-edit-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { ViewPageComponent } from './pages/view-page/view-page.component';
 
 const routes: Routes = [
   {path: 'reset-password',component: PasswordResetPageComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
     {path:'home',component:HomePageComponent},
     {path:'rent',component:RentPageComponent},
     {path:'buy',component:BuyPageComponent},
-    {path:'createOrEdit',component:CreateOrEditPageComponent}
+    {path:'createOrEdit',component:CreateOrEditPageComponent},
+    {path:'detailView/:id',component:ViewPageComponent}
   ]},
   {path:'**',component:NotFoundPageComponent}
 ];

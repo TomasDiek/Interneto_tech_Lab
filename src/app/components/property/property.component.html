@@ -1,8 +1,18 @@
 <div class="card">
-    <img style="height:250px;" src="../../../assets/images/istockphoto-1072291024-612x612.jpg" alt="">
+    <div class="card-img-wrapper">
+        <img class="card-img-top" src="../../../assets/images/istockphoto-1072291024-612x612.jpg" alt="">
+        <ul class="list-inline text-center member-icons animate"> 
+            <li class="list-inline-item">
+                <button class="btn btn-primary" routerLink="../detailView/{{property.id}}"><i class="bi bi-pencil-square"></i></button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn btn-primary"><i class="bi bi-envelope-at"></i></button>
+            </li>
+        </ul>
+    </div>
     <div class="card-body p-2">
-        <h1>{{Property.adress}}</h1>
-        <h2>{{Property.type}}</h2>
-        <h3>{{Property.price}}</h3>
+        <h1>{{property.adress}}</h1>
+        <h2>{{property.type}}</h2>
+        <h3>{{property.price}}</h3>
     </div>
 </div>

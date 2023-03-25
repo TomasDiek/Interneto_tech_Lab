@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BuyPageComponent } from './pages/buy-page/buy-page.component';
@@ -28,6 +29,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { PropertyComponent } from './components/property/property.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { PropertyService } from './services/property.service';
+
 
 @NgModule({
   declarations: [
@@ -55,11 +60,12 @@ import { PropertyComponent } from './components/property/property.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     TabMenuModule,
     DropdownModule
   ],
-  providers: [],
+  providers: [PropertyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

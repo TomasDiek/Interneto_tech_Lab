@@ -1,0 +1,26 @@
+[
+    {
+      "id":1,
+      "adress":"Vileikos g.8",
+      "type":"House",
+      "price":120000
+    },
+    {
+      "id":2,
+      "adress":"Architektų g. 152",
+      "type":"House",
+      "price":24000
+    },
+    {
+      "id":3,
+      "adress":"Šilutės pl. 56",
+      "type":"House",
+      "price":150000
+    },
+    {
+      "id":4,
+      "adress":" Plento g. 3",
+      "type":"House",
+      "price":50000
+    }
+  ]
