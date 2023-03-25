@@ -29,6 +29,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { PropertyComponent } from './components/property/property.component';
+//forms
+import{FormsModule} from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PropertyService } from './services/property.service';
@@ -65,7 +67,8 @@ import { CreateListingComponent } from './components/create-listing/create-listi
     HttpClientModule,
     AppRoutingModule,
     TabMenuModule,
-    DropdownModule
+    DropdownModule,
+    FormsModule
   ],
   providers: [PropertyService],
   bootstrap: [AppComponent]
