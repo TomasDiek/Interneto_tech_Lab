@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid mr-100 ml-100">
+      <a class="navbar-brand" alt="HomeFinder logo" href="#" routerLink="home" routerLinkActive="active"><img src="../../../assets/images/Logo_HomeFinder.png"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="buy" routerLinkActive="active" href="#">Buy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="rent" routerLinkActive="active">Rent</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="createOrEdit" routerLinkActive="active">Create</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" routerLink="../login" routerLinkActive="active">Sign in</a></li>
+                <li><a class="dropdown-item" href="#" aria-current="true" routerLink="../signUp" routerLinkActive="active">Sign up</a></li>
+                <li><a class="dropdown-item" href="#">Another link</a></li>
+              </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
