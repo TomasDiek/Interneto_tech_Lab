@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import * as alertify from 'alertifyjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  items!: MenuItem[];
 
-  activeItem!: MenuItem;
+  loggedinUser:string | null | undefined;
 
   ngOnInit(): void {
-      // this.items=[
-      //   { label: 'Home', routerLink:['home'] },
-      //   { label: 'Buy',routerLink:['buy'] },
-      //   { label: 'Rent',routerLink:['rent'] },
-      //   { label: 'Create',routerLink:['createOrEdit'] },
-      //   {label:'Sign in',routerLink:['../login']},
-      //   {label:'Sign up',routerLink:['../signUp']}
-        
-      // ];
-
-      // this.activeItem = this.items[0];
+    alertify.set('notifier','position', 'top-right');
+  }
+  loggedin(){
+    this.loggedinUser=localStorage.getItem('token');
+    return this.loggedinUser;
+  }
+  onLogout(){
+   localStorage.removeItem('token') ;
+   alertify.success("You are logged out");
   }
 }

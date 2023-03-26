@@ -37,8 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { PropertyService } from './services/property.service';
 import { CreateListingComponent } from './components/create-listing/create-listing.component';
 import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -72,9 +77,14 @@ import { UserService } from './services/user.service';
     TabMenuModule,
     DropdownModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    
   ],
-  providers: [PropertyService,UserService],
+  providers: [PropertyService,UserService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
