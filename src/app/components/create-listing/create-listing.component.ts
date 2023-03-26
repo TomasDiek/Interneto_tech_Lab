@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api'
+import { IProperty } from 'src/app/interface/property';
 
 @Component({
   selector: 'app-create-listing',
@@ -11,13 +12,19 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api'
 export class CreateListingComponent implements OnInit {
   @ViewChild('Form') addPropertyForm!: NgForm;
   propertyTypes:Array<string>=['House','Apartment','Duplex'];
-  furnishTypes:Array<string>=['Fully','Semi','Unfurnished']
+  furnishTypes:Array<string>=['Fully','Semi','Unfurnished'];
+
+  propertyView: IProperty={
+    id:0,
+    sellRent:0,
+    adress:'',
+    type:'',
+    price:0,
+   
+  };
 
 
-  stateOptions: any[] = [
-    { label: 'Sell', value: 'sell' },
-    { label: 'Rent', value: 'rent' }
-];
+
 
   constructor(private route:Router){}
   ngOnInit(): void {
@@ -25,7 +32,6 @@ export class CreateListingComponent implements OnInit {
   }
   // Form:NgForm
   onSubmit(){
-    console.log(this.stateOptions.values)
     console.log(this.addPropertyForm)
   }
 
