@@ -36,6 +36,7 @@ import{FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PropertyService } from './services/property.service';
 import { CreateListingComponent } from './components/create-listing/create-listing.component';
+import { UserService } from './services/user.service';
 
 
 
@@ -73,7 +74,7 @@ import { CreateListingComponent } from './components/create-listing/create-listi
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PropertyService],
+  providers: [PropertyService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,8 +16,8 @@ import { ViewPageComponent } from './pages/view-page/view-page.component';
 const routes: Routes = [
 
   {path:'',redirectTo:'entry/login',pathMatch:'full'},
-
-  {path:'entry',component:EntryPageComponentComponent,canActivate:[AuthGuard],children:
+  // canActivate:[AuthGuard]
+  {path:'entry',component:EntryPageComponentComponent,children:
   [
     {path: 'reset-password',component: PasswordResetPageComponent},
     {path:'login',component:LoginPageComponent},
