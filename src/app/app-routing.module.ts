@@ -14,12 +14,14 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 import { ViewPageComponent } from './pages/view-page/view-page.component';
 
 const routes: Routes = [
-  {path: 'reset-password',component: PasswordResetPageComponent},
-  {path:'login',component:LoginPageComponent},
-  {path:'',redirectTo:'login',pathMatch:'full'},
-  {path:'signUp',component:SignUpPageComponent},
+
+  {path:'',redirectTo:'entry/login',pathMatch:'full'},
+
   {path:'entry',component:EntryPageComponentComponent,canActivate:[AuthGuard],children:
   [
+    {path: 'reset-password',component: PasswordResetPageComponent},
+    {path:'login',component:LoginPageComponent},
+    {path:'signUp',component:SignUpPageComponent},
     {path:'home',component:HomePageComponent},
     {path:'rent',component:RentPageComponent},
     {path:'buy',component:BuyPageComponent},
