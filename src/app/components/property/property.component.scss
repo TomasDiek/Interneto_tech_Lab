@@ -1,4 +1,14 @@
-
+.card{
+    min-height: 400px;
+}
+.card-body h1{
+    font-family: fantasy;
+    color: #99cfe0;
+}
+.font-highlight{
+    font-style: italic;
+    color: red;
+}
 // Image
 .card-img-wrapper{
     overflow: hidden;

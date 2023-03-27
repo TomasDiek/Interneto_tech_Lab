@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IProperty } from '../interface/property';
+
 import { Observable, map } from 'rxjs';
+import { IPropertyBase } from '../interface/IPropertyBase';
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyService {
   constructor(private http: HttpClient) {}
 
-  getProperties(SellRent: number): Observable<IProperty[]> {
+  getProperties(SellRent: number): Observable<IPropertyBase[]> {
     return this.http.get('../../../assets/data/small.json').pipe(
       map((data: any) => {
-        const propertiesArray: Array<IProperty> = [];
+        const propertiesArray: Array<IPropertyBase> = [];
 
         for (const id in data) {
           if (data.hasOwnProperty(id) && data[id].sellRent === SellRent) {

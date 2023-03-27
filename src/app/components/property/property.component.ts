@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IProperty } from 'src/app/interface/property';
+import { IPropertyBase } from 'src/app/interface/IPropertyBase';
+
 
 @Component({
   selector: 'app-property',
@@ -7,6 +8,6 @@ import { IProperty } from 'src/app/interface/property';
   styleUrls: ['./property.component.scss']
 })
 export class PropertyComponent {
-  @Input() property!:IProperty;
-
+  @Input() property!:IPropertyBase;
+  @Input() hideIcons!: boolean;
 }

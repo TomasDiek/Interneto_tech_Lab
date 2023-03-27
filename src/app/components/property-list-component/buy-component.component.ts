@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProperty } from 'src/app/interface/property';
+import { IPropertyBase } from 'src/app/interface/IPropertyBase';
 import { PropertyService } from 'src/app/services/property.service';
 
 
@@ -11,7 +11,7 @@ import { PropertyService } from 'src/app/services/property.service';
 })
 export class BuyComponentComponent implements OnInit {
   sellRent=1;
-  properties!:Array<IProperty>;
+  properties!:Array<IPropertyBase>;
   constructor(private route:ActivatedRoute,private propertyService:PropertyService){}
 
   ngOnInit():void{
