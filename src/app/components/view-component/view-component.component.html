@@ -8,10 +8,11 @@
         <div class="card-body">
           <h1 class="card-title">{{property.address}}</h1>
           <div>
-              <strong>{{property.pType}} @ {{property.price}} €</strong>
+              <strong>{{property.pType}} priced at <span class="font-highlight">{{property.price}}</span> €</strong>
           </div>
           <div>
-             <strong>in {{property.city}}</strong>
+            
+             <strong>in <span class="theme-color">{{property.city}}</span></strong>
           </div> <hr>
           <div>
               <strong>Build Area: </strong>
@@ -36,26 +37,27 @@
         <tabset class="member-tabset">
           <tab heading="Overview">
             <h1>Overview</h1>
+            <br>
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="heading">
-                        <strong>Floor Number</strong>
+                    <div *ngIf="property.totalFloor" class="heading">
+                        <strong>Number of floors</strong>
                         <p>{{property.totalFloor}}</p>
                     </div>
   
-                    <div class="heading">
+                    <div *ngIf="property.age" class="heading">
                         <strong>Age of Property</strong>
                         <p>{{property.age}}</p>
                     </div>
   
-                    <div class="heading">
+                    <div *ngIf="property.availableFrom" class="heading">
                         <strong>Posession</strong>
                         <p>{{property.availableFrom}}</p>
                     </div>
                 </div>
   
 
-                <div class="col-sm-12">
+                <div *ngIf="property.description" class="col-sm-12">
                     <div class="heading">
                         <strong>About Property</strong>
                         <p>{{property.description}}</p>
@@ -67,9 +69,9 @@
             <div class="col-sm-12">
               <h1>Address</h1>
               <div class="heading">
-                  <strong>{{property.address}}</strong><br/>
+                  <strong>Street: {{property.address}}</strong><br/>
                   <!-- <strong>{{property.Address2}}</strong><br/> -->
-                  <strong>{{property.city}}</strong>
+                  <strong>City of {{property.city}}</strong>
               </div>
           </div>
   
@@ -79,7 +81,7 @@
           </tab>
           <tab heading="Contact">
             <h1>Contact Detail</h1>
-            This should be restricted area and only registered user should be able to see seller contact details
+            This should be restricted area and only registered user should be able to see seller's contact details
           </tab>
         </tabset>
       </div>

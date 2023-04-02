@@ -16,7 +16,10 @@
         <h1 class="mb-0">{{property.pType}}</h1>
         {{property.address}}, {{property.city}}
         <h6 class="mt-2">{{property.fType}}
-            <span *ngIf="property.fType!=='Unfurnished'">Furnished</span> | Ready to Move</h6>
+            <span *ngIf="property.fType!=='Unfurnished'">Furnished</span> | 
+            <span *ngIf="property.rtm==2">Not Ready To Move</span>
+            <span *ngIf="property.rtm!=2">Ready To Move</span>
+        </h6>
         <hr class="mt-0 mb-2">
         <h6 class="mb-0">Price: <span class="font-highlight">{{property.price}} EUR.</span> |
             Area:  <span class="font-highlight">{{property.builtArea}} Sq m </span> </h6>
