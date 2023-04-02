@@ -2,15 +2,15 @@
     <div id="pipes" class="mb-5">
         <label>Filter City: &nbsp; </label>
         <input [(ngModel)]='City'>
-        <button type="button" (click)="onCityFilter()">Search</button>
-        <button type="button" (click)="onCityFilterClear()">Clear</button> &nbsp;
+        <button type="button" class="btn btn-light" (click)="onCityFilter()">Search</button>
+        <button type="button" class="btn btn-light" (click)="onCityFilterClear()">Clear</button> &nbsp;
 
         <label>Sort by &nbsp;</label>
-        <select [(ngModel)] = 'SortbyParam'>
+        <select class="form-select" [(ngModel)] = 'SortbyParam'>
             <option value="city">City</option>
             <option value="price">Price</option>
         </select>
-        <button type="button" (click) = "onSortDirection()">
+        <button type="button" class="btn btn-light" (click) = "onSortDirection()">
             <i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
             <i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
         </button>
