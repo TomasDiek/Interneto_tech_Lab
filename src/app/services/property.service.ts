@@ -14,19 +14,40 @@ export class PropertyService {
     return this.http.get('../../../assets/data/small.json').pipe(
       map((data: any) => {
         const propertiesArray: Array<IPropertyBase> = [];
-
+        // @ts-ignore: Object is possibly 'null'.
+        const localProperties= JSON.parse(localStorage.getItem('newProp'));
+        if(localProperties){
+          for (const id in localProperties) {
+            if (localProperties.hasOwnProperty(id) && localProperties[id].sellRent === SellRent) {
+              propertiesArray.push(localProperties[id]);
+            }
+          }
+        }
         for (const id in data) {
           if (data.hasOwnProperty(id) && data[id].sellRent === SellRent) {
             propertiesArray.push(data[id]);
           }
         }
-
         return propertiesArray;
       })
     );
   }
   addProperty(property:Property){
-    localStorage.setItem('newProp',JSON.stringify(property))
-
+    let newProp=[property];
+    if(localStorage.getItem('newProp')){
+      newProp=[property,...JSON.parse(localStorage.getItem('newProp')||'{}')];
+    }
+    localStorage.setItem('newProp',JSON.stringify(newProp))
+  }
+  newPropId(){
+    if(localStorage.getItem('propertyId')){
+       // @ts-ignore: Object is possibly 'null'.
+      localStorage.setItem('propertyId',String(+localStorage.getItem('propertyId')+1));
+      return localStorage.getItem('propertyId')
+    }
+    else{
+      localStorage.setItem('propertyId','101');
+      return 101;
+    }
   }
 }

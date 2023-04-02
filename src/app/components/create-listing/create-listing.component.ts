@@ -20,7 +20,7 @@ export class CreateListingComponent implements OnInit {
   nextClicked!: boolean;
   property = new Property();
   propertyView: IPropertyBase={
-    id:null as any,
+    propertyId:null as any,
     sellRent:null as any,
     pType:'',
     fType:'',
@@ -141,6 +141,8 @@ export class CreateListingComponent implements OnInit {
     return this.OtherInformation.controls.Description as FormControl;
   }
   mapProperty():void{
+    // @ts-ignore: Object is possibly 'null'.
+    this.property.propertyId=this.propertyService.newPropId();
     this.property.sellRent = +this.SellRent.value;
     this.property.pType = this.PType.value;
     this.property.city = this.City.value;
