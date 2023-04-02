@@ -2,6 +2,15 @@
     .container-fluid{
         margin-right: 100px;
     }
+    .navbar-nav .active {
+        color: #fff;
+        background-color: #99cfe0;
+        border-radius: 4px;
+        opacity: 0.35;
+    }
+    #login{
+        width: 100%;
+    }
 } 
 @media only screen and (max-width: 500px)  {
    .nav{

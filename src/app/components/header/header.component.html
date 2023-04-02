@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
           <li class="nav-item">
-            <a class="nav-link active" [routerLinkActiveOptions]="{exact:true}" aria-current="page" routerLink="buy" routerLinkActive="active" >Buy</a>
+            <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" aria-current="page" routerLink="buy" routerLinkActive="active" >Buy</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLinkActiveOptions]="{exact:true}"  routerLink="rent" routerLinkActive="active">Rent</a>
@@ -16,7 +16,7 @@
             <a class="nav-link" [routerLinkActiveOptions]="{exact:true}"  routerLink="createOrEdit" routerLinkActive="active">Create</a>
           </li>
         </ul>
-        <div>
+        <div id="buttons">
           <ul class="nav navbar-nav">
             <li class="mb-2 me-3" *ngIf="!loggedin()"><a class="text-decoration-none text-dark" [routerLinkActiveOptions]="{exact:true}" routerLink="login" routerLinkActive="active">Login</a></li>
             <li *ngIf="!loggedin()"><a class="text-decoration-none text-dark" [routerLinkActiveOptions]="{exact:true}"  routerLink="signUp" routerLinkActive="active">Register</a></li>
