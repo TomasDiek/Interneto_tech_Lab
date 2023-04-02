@@ -45,6 +45,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     PropertyComponent,
     CreateListingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

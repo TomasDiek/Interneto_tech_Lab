@@ -1,5 +1,28 @@
-<div class="row">
-    <div *ngFor="let property of properties" class="shadow-lg col-sm-4 p-3">
-        <app-property [property]="property"></app-property>
+<div class="container">
+    <div id="pipes" class="mb-5">
+        <label>Filter City: &nbsp; </label>
+        <input [(ngModel)]='City'>
+        <button type="button" (click)="onCityFilter()">Search</button>
+        <button type="button" (click)="onCityFilterClear()">Clear</button> &nbsp;
+
+        <label>Sort by &nbsp;</label>
+        <select [(ngModel)] = 'SortbyParam'>
+            <option value="city">City</option>
+            <option value="price">Price</option>
+        </select>
+        <button type="button" (click) = "onSortDirection()">
+            <i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
+            <i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
+        </button>
+    </div>
+
+
+    <div class="row">
+        <div *ngFor="let property of properties|filter:SearchCity:'city'|sort:[SortbyParam,SortDirection]"
+    class="col-sm-4">
+        <div class="shadow-lg p-3 mb-4">
+            <app-property [property]="property"></app-property>
+        </div>
+    </div>
     </div>
 </div>
