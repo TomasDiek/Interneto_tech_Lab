@@ -1,19 +1,24 @@
 <div class="container">
     <div id="pipes" class="mb-5">
-        <label>Filter City: &nbsp; </label>
-        <input [(ngModel)]='City'>
-        <button type="button" class="btn btn-light" (click)="onCityFilter()">Search</button>
-        <button type="button" class="btn btn-light" (click)="onCityFilterClear()">Clear</button> &nbsp;
-
-        <label>Sort by &nbsp;</label>
-        <select class="form-select" [(ngModel)] = 'SortbyParam'>
-            <option value="city">City</option>
-            <option value="price">Price</option>
-        </select>
-        <button type="button" class="btn btn-light" (click) = "onSortDirection()">
-            <i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
-            <i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
-        </button>
+        <div class="filters d-flex m-auto">
+            <label>Filter City: &nbsp; </label>
+            <input type="text" class="form-control" placeholder="Name..." aria-label="City" [(ngModel)]='City' aria-describedby="basic-addon1">
+            <button type="button" class="btn btn-light" (click)="onCityFilter()">Search</button>
+            <button type="button" class="btn btn-light" (click)="onCityFilterClear()">Clear</button> &nbsp;
+        </div>
+        
+        <div class="sorting d-flex m-auto">
+            <label>Sort by &nbsp; </label>
+            <select class="form-select" [(ngModel)] = 'SortbyParam'>
+                <option value="city">City</option>
+                <option value="price">Price</option>
+            </select>
+            <button type="button" class="btn btn-light" (click) = "onSortDirection()">
+                <i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
+                <i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
+            </button>
+        </div>
+       
     </div>
 
 

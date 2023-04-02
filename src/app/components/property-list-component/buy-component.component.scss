@@ -8,4 +8,26 @@
     #pipes{
         display: grid;
     }
+    .filters input{
+        width: 55%;
+    }
+    .sorting label{
+        margin: auto;
+    }
+    .sorting select{
+        width: 70%;
+    }
+}
+@media only screen and (min-width: 780px)  {
+    #pipes{
+        display: flex;
+    }
+
+    .sorting label{
+        margin:0;
+        padding: 0;
+    }
+    .sorting select{
+        width: 189px;
+    }
 }
