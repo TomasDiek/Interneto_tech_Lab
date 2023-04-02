@@ -22,7 +22,7 @@ const routes: Routes = [
     {path: 'reset-password',component: PasswordResetPageComponent},
     {path:'login',component:LoginPageComponent},
     {path:'signUp',component:SignUpPageComponent},
-    {path:'home',component:HomePageComponent},
+    // {path:'home',component:HomePageComponent},
     {path:'rent',component:RentPageComponent},
     {path:'buy',component:BuyPageComponent},
     {path:'createOrEdit',component:CreateOrEditPageComponent},

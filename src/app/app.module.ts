@@ -44,6 +44,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    NgxGalleryModule
     
   ],
   providers: [PropertyService,UserService,AuthService],

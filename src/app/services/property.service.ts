@@ -10,25 +10,44 @@ import { Property } from '../interface/property';
 export class PropertyService {
   constructor(private http: HttpClient) {}
 
-  getProperties(SellRent: number): Observable<IPropertyBase[]> {
+  getProperties(SellRent?: number): Observable<Property[]> {
     return this.http.get('../../../assets/data/small.json').pipe(
       map((data: any) => {
-        const propertiesArray: Array<IPropertyBase> = [];
+        const propertiesArray: Array<Property> = [];
         // @ts-ignore: Object is possibly 'null'.
         const localProperties= JSON.parse(localStorage.getItem('newProp'));
         if(localProperties){
           for (const id in localProperties) {
-            if (localProperties.hasOwnProperty(id) && localProperties[id].sellRent === SellRent) {
+            if(SellRent){
+              if (localProperties.hasOwnProperty(id) && localProperties[id].sellRent === SellRent) {
+                propertiesArray.push(localProperties[id]);
+              }
+            }
+            else{
               propertiesArray.push(localProperties[id]);
             }
           }
         }
         for (const id in data) {
-          if (data.hasOwnProperty(id) && data[id].sellRent === SellRent) {
+          if(SellRent){
+            if (data.hasOwnProperty(id) && data[id].sellRent === SellRent) {
+              propertiesArray.push(data[id]);
+            }
+          }
+          else{
             propertiesArray.push(data[id]);
           }
         }
         return propertiesArray;
+      })
+    );
+    return this.http.get<Property[]>('../assets/data/small.json');
+  }
+  getProperty(id: number) {
+    return this.getProperties().pipe(
+      map(propertiesArray => {
+        // throw new Error("ok")
+        return propertiesArray.find(p => p.propertyId === id);
       })
     );
   }
