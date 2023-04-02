@@ -7,6 +7,6 @@ export interface IPropertyBase {
     builtArea:number;
     city:string;
     rtm:number;
-    adress:string;
+    address:string;
     image?:string;    
 }

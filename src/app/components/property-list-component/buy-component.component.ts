@@ -21,6 +21,10 @@ export class BuyComponentComponent implements OnInit {
     this,this.propertyService.getProperties(this.sellRent).subscribe(
       data=>{
         this.properties=data;
+        const newProperty=JSON.parse(localStorage.getItem('newProp')||'{}');
+        if(newProperty.sellRent==this.sellRent){
+          this.properties=[newProperty,...this.properties]
+        }
       }, error=>{
         console.log(error);
       }
