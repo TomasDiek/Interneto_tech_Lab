@@ -13,11 +13,12 @@ export class HeaderComponent implements OnInit {
     alertify.set('notifier','position', 'top-right');
   }
   loggedin(){
-    this.loggedinUser=localStorage.getItem('token');
+    this.loggedinUser=localStorage.getItem('userName');
     return this.loggedinUser;
   }
   onLogout(){
    localStorage.removeItem('token') ;
+   localStorage.removeItem('userName') ;
    alertify.success("You are logged out");
   }
 }

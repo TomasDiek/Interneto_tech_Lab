@@ -30,11 +30,16 @@ export class CreateListingComponent implements OnInit {
     rtm:null as any,
     address:'',
   };
+  cityList!:any[];
 
   constructor(private fb: FormBuilder, private router:Router,private propertyService:PropertyService){}
   ngOnInit(): void {
     alertify.set('notifier','position', 'top-right');
     this.CreateAddPropertyForm();
+    this.propertyService.getAllCities().subscribe(data=>{
+      this.cityList=data;
+      console.log(data)
+    })
   }
   // Form:NgForm
   CreateAddPropertyForm(){

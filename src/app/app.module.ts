@@ -33,7 +33,7 @@ import { PropertyComponent } from './components/property/property.component';
 //forms
 import{FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PropertyService } from './services/property.service';
 import { CreateListingComponent } from './components/create-listing/create-listing.component';
 import { UserService } from './services/user.service';
@@ -47,6 +47,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { HttpErrorInterceptor } from './services/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,16 @@ import { SortPipe } from './pipes/sort.pipe';
     NgxGalleryModule
     
   ],
-  providers: [PropertyService,UserService,AuthService],
+  providers: [
+    PropertyService,
+    UserService,
+    AuthService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

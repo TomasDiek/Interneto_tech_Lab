@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import * as alertify from 'alertifyjs';
 import { Router } from '@angular/router';
+import { UserForLogin } from 'src/app/interface/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,15 +16,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(loginForm: NgForm){
-    console.log(loginForm.value)
-    const token = this.authService.authUser(loginForm.value);
-    if(token){
-      localStorage.setItem('token',token.userName)
-      alertify.success("Login was Successful")
-      this.router.navigate(['entry/buy']);
-    }
-    else{
-      alertify.error("Check your login credentials")
-    }
+    this.authService.authUser(loginForm.value).subscribe(
+      // @ts-ignore: Object is possibly 'null'.
+      (response: UserForLogin)=> {
+        const user = response;
+        localStorage.setItem('token',user.token)
+        localStorage.setItem('userName',user.userName)
+        alertify.success("Login was Successful")
+        this.router.navigate(['entry/buy']);
+      });
   }
 }

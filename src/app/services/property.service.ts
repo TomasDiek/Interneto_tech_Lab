@@ -9,7 +9,9 @@ import { Property } from '../interface/property';
 })
 export class PropertyService {
   constructor(private http: HttpClient) {}
-
+  getAllCities():Observable<string[]>{
+    return this.http.get<string[]>('https://localhost:7272/api/CityControler');
+  }
   getProperties(SellRent?: number): Observable<Property[]> {
     return this.http.get('../../../assets/data/small.json').pipe(
       map((data: any) => {

@@ -1,6 +1,11 @@
-export interface User {
+export interface UserForRegister {
     userName:string;
-    userEmail:string;
+    userEmail?:string;
     userPassword:string;
-    userMobileNumber:string;
+    userMobileNumber?:string;
+}
+export interface UserForLogin {
+    userName:string;
+    userPassword:string;
+    token:string;
 }
