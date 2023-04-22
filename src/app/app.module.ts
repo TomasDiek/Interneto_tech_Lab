@@ -48,6 +48,9 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { HttpErrorInterceptor } from './services/http-error.interceptor';
+import { DatePipe } from '@angular/common';
+import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,8 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
     LoginComponent,
     RegisterComponent,
     FilterPipe,
-    SortPipe
+    SortPipe,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,8 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
+    FileUploadModule
     
   ],
   providers: [
@@ -99,7 +104,8 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
       provide:HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi:true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

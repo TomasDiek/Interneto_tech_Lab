@@ -16,7 +16,7 @@ export class PropertyService {
   constructor(private http: HttpClient) { }
 
   getAllCities(): Observable<string[]> {
-      return this.http.get<string[]>(this.baseUrl + 'city/cities');
+      return this.http.get<string[]>(this.baseUrl + 'cityControler/cities');
   }
 
   getPropertyTypes(): Observable<IKeyValuePair[]> {
@@ -41,7 +41,7 @@ export class PropertyService {
               Authorization: 'Bearer '+ localStorage.getItem('token')
           })
       };
-      return this.http.post(this.baseUrl + '/property/add', property, httpOptions);
+      return this.http.post(this.baseUrl + 'property/add', property, httpOptions);
   }
 
   newPropID() {

@@ -57,7 +57,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         // server side error
         if(error.status===401)
         {
-            return error.statusText;
+            console.log(error)
+            return 'Please login before posting';
         }
 
         if (error.error.errorMessage && error.status!==0) {
@@ -69,5 +70,5 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
     }
     return errorMessage;
-}
+    }
 }

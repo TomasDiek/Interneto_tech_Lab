@@ -13,10 +13,10 @@ import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
 })
 export class ViewComponentComponent implements OnInit {
   public propertyId!:number;
+  public mainPhotoUrl: string = '';
   property = new Property();
   galleryOptions!: NgxGalleryOptions[];
   galleryImages!: NgxGalleryImage[];
-
   constructor(private route:ActivatedRoute, private router:Router, private propertyService:PropertyService){}
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -26,10 +26,9 @@ export class ViewComponentComponent implements OnInit {
           // @ts-ignore: Object is possibly 'null'.
           (data: Property) => {
             this.property = data;
-                // @ts-ignore: Object is possibly 'null'.
-
+            // @ts-ignore: Object is possibly 'null'.
             this.property.age = this.propertyService.getPropertyAge(this.property.estPossessionOn);
-
+            this.galleryImages = this.getPropertyPhotos();
           }, error=> this.router.navigate(['entry/buy'])
         );
       }
@@ -45,27 +44,29 @@ export class ViewComponentComponent implements OnInit {
       },
     ];
 
-    this.galleryImages = [
-      {
-        small: '../../assets/images/interior1.jpg',
-        medium: '../../assets/images/interior1.jpg',
-        big: '../../assets/images/interior1.jpg'
-      },
-      {
-        small: '../../assets/images/interior2.jpg',
-        medium: '../../assets/images/interior2.jpg',
-        big: '../../assets/images/interior2.jpg'
-      },
-      {
-        small: '../../assets/images/interior3.jpg',
-        medium: '../../assets/images/interior3.jpg',
-        big: '../../assets/images/interior3.jpg'
-      },
-      {
-        small: '../../assets/images/interior4.jpg',
-        medium: '../../assets/images/interior4.jpg',
-        big: '../../assets/images/interior4.jpg'
-      },
-    ];
+    }
+    changePrimaryPhoto(mainPhotoUrl: string) {
+      this.mainPhotoUrl = mainPhotoUrl;
+    }
+    getPropertyPhotos(): NgxGalleryImage[] {
+      const photoUrls: NgxGalleryImage[] = [];
+      for (const photo of this.property.photos ?? []) {
+          if(photo.isPrimary)
+          {
+              this.mainPhotoUrl = photo.imageUrl;
+          }
+          else{
+              photoUrls.push(
+                  {
+                      small: photo.imageUrl,
+                      medium: photo.imageUrl,
+                      big: photo.imageUrl
+                  }
+              );}
+      }
+      return photoUrls;
   }
-}
+
+    
+  }
+
