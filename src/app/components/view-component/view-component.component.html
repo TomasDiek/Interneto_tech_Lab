@@ -2,13 +2,13 @@
     <div class="col-sm-4 p-0">
       <div class="card">
         <div class="card-img-wrapper">
-          <img *ngIf="property.image" class="card-img-top" src="../../../assets/images/{{property.image}}.jpg">
-          <img *ngIf="!property.image" class="card-img-top" src="../../../assets/images/defaultHouse.jpg">
+          <img *ngIf="property.photo" class="card-img-top" src="../../../assets/images/{{property.photo}}.jpg">
+          <img *ngIf="!property.photo" class="card-img-top" src="../../../assets/images/defaultHouse.jpg">
         </div>
         <div class="card-body">
           <h1 class="card-title">{{property.address}}</h1>
           <div>
-              <strong>{{property.pType}} priced at <span class="font-highlight">{{property.price}}</span> €</strong>
+              <strong>{{property.propertyType}} priced at <span class="font-highlight">{{property.price}}</span> €</strong>
           </div>
           <div>
             
@@ -21,8 +21,13 @@
   
           <div>
               <strong>Furnishing Type: </strong>
-              {{property.fType}}
+              {{property.furnishingType}}
           </div>
+          <div>
+            <strong>Available for: </strong>
+            <span *ngIf="property.sellRent == 1">Purchase</span>
+            <span *ngIf="property.sellRent == 2">Rent</span>
+        </div>
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
@@ -40,19 +45,19 @@
             <br>
             <div class="row">
                 <div class="col-sm-6">
-                    <div *ngIf="property.totalFloor" class="heading">
+                    <div *ngIf="property.totalFloors" class="heading">
                         <strong>Number of floors</strong>
-                        <p>{{property.totalFloor}}</p>
+                        <p>{{property.totalFloors}}</p>
                     </div>
   
-                    <div *ngIf="property.age" class="heading">
+                    <div  class="heading">
                         <strong>Age of Property</strong>
                         <p>{{property.age}}</p>
                     </div>
   
-                    <div *ngIf="property.availableFrom" class="heading">
+                    <div *ngIf="property.estPossessionOn" class="heading">
                         <strong>Posession</strong>
-                        <p>{{property.availableFrom}}</p>
+                        <p>{{property.estPossessionOn | date}}</p>
                     </div>
                 </div>
   

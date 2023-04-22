@@ -26,10 +26,15 @@ export class ViewComponentComponent implements OnInit {
           // @ts-ignore: Object is possibly 'null'.
           (data: Property) => {
             this.property = data;
+                // @ts-ignore: Object is possibly 'null'.
+
+            this.property.age = this.propertyService.getPropertyAge(this.property.estPossessionOn);
+
           }, error=> this.router.navigate(['entry/buy'])
         );
       }
     );
+    
     this.galleryOptions = [
       {
         width: '100%',

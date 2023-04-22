@@ -23,12 +23,10 @@ export class BuyComponentComponent implements OnInit {
     if (this.route.snapshot.url.toString()=='rent'){
       this.sellRent=2;
     }
-    this,this.propertyService.getProperties(this.sellRent).subscribe(
+    this,this.propertyService.getAllProperties(this.sellRent).subscribe(
       data=>{
         this.properties=data;
 
-      }, error=>{
-        console.log(error);
       }
     )
   }

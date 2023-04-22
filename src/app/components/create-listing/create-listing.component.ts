@@ -20,14 +20,14 @@ export class CreateListingComponent implements OnInit {
   nextClicked!: boolean;
   property = new Property();
   propertyView: IPropertyBase={
-    propertyId:null as any,
+    id:null as any,
     sellRent:null as any,
-    pType:'',
-    fType:'',
+    propertyType:'',
+    furnishingType:'',
     price:null as any,
     builtArea:null as any,
     city:'',
-    rtm:null as any,
+    readyToMove:null as any,
     address:'',
   };
   cityList!:any[];
@@ -149,18 +149,18 @@ export class CreateListingComponent implements OnInit {
     // @ts-ignore: Object is possibly 'null'.
     this.property.propertyId=this.propertyService.newPropId();
     this.property.sellRent = +this.SellRent.value;
-    this.property.pType = this.PType.value;
+    this.property.propertyType = this.PType.value;
     this.property.city = this.City.value;
-    this.property.fType = this.FType.value;
+    this.property.furnishingType = this.FType.value;
     this.property.price = this.Price.value;
     this.property.builtArea = this.BuiltArea.value;
-    this.property.totalFloor = this.TotalFloor.value;
+    this.property.totalFloors = this.TotalFloor.value;
     this.property.address = this.Address.value;
-    this.property.rtm = this.RTM.value;
+    this.property.readyToMove = this.RTM.value;
     this.property.age = this.AOP.value;
-    this.property.availableFrom = this.PossessionOn.value;
+    this.property.estPossessionOn = this.PossessionOn.value;
     this.property.description = this.Description.value;
-    this.property.PostedOn = new Date().toString();
+    //this.property.post = new Date().toString();
   }
   tabsValid():boolean{
     if(this.BasicInformation.invalid){

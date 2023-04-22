@@ -24,7 +24,7 @@
                                         
                                         <div class="form-group col-12">
                                             <p>Property Type</p>
-                                            <div class="btn-group" btnRadioGroup formControlName="PType" [(ngModel)]="propertyView.pType" >
+                                            <div class="btn-group" btnRadioGroup formControlName="PType" [(ngModel)]="propertyView.propertyType" >
                                                 <label
                                                 *ngFor="let item of propertyTypes"
                                                 class="btn btn-outline-primary me-2" 
@@ -38,7 +38,7 @@
                                         <div class="form-group col-12">
                                             <p>Furnishing Type</p>
                                             <div class="btn-group" btnRadioGroup
-                                            [(ngModel)]='propertyView.fType' formControlName="FType">
+                                            [(ngModel)]='propertyView.furnishingType' formControlName="FType">
                                                 <label
                                                 *ngFor="let item of furnishTypes"
                                                 class="btn btn-outline-primary me-2" 
