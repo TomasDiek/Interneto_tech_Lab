@@ -15,8 +15,6 @@ import { ViewPageComponent } from './pages/view-page/view-page.component';
 import { NotFoundPageComponent } from './pages/notFoundPage/not-foun-page.component';
 import { PasswordResetPageComponent } from './pages/password-reset-page/password-reset-page.component';
 // Components
-import { PasswordResetComponentComponent } from './components/password-reset-component/password-reset-component.component';
-import { HomeComponentComponent } from './components/home-component/home-component.component';
 import { BuyComponentComponent } from './components/property-list-component/buy-component.component';
 import { RentComponentComponent } from './components/rent-component/rent-component.component';
 import { NotFoundComponentComponent } from './components/not-found-component/not-found-component.component';
@@ -64,8 +62,6 @@ import { FileUploadModule } from 'ng2-file-upload';
     ViewPageComponent,
     NotFoundPageComponent,
     PasswordResetPageComponent,
-    PasswordResetComponentComponent,
-    HomeComponentComponent,
     BuyComponentComponent,
     RentComponentComponent,
     NotFoundComponentComponent,
@@ -93,7 +89,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     NgxGalleryModule,
-    FileUploadModule
+    FileUploadModule,
+    
     
   ],
   providers: [
