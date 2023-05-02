@@ -12,6 +12,7 @@ import { NotFoundPageComponent } from './pages/notFoundPage/not-foun-page.compon
 import { CreateOrEditPageComponent } from './pages/create-or-edit-page/create-or-edit-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { ViewPageComponent } from './pages/view-page/view-page.component';
+import { UpdatePageComponent } from './pages/update-page/update-page.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path:'login',component:LoginPageComponent},
     {path:'signUp',component:SignUpPageComponent},
     // {path:'home',component:HomePageComponent},
+    {path:'update/:id',component:UpdatePageComponent},
     {path:'rent',component:RentPageComponent},
     {path:'buy',component:BuyPageComponent},
     {path:'createOrEdit',component:CreateOrEditPageComponent},

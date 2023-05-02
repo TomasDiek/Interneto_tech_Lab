@@ -43,6 +43,14 @@ export class PropertyService {
       };
       return this.http.post(this.baseUrl + 'property/add', property, httpOptions);
   }
+  updateProperty(property:Property){
+    const httpOptions = {
+        headers: new HttpHeaders({
+            Authorization: 'Bearer '+ localStorage.getItem('token')
+        })
+    };
+    return this.http.put(this.baseUrl + 'property/update/'+property.id.toString(), property, httpOptions);
+  }
 
   newPropID() {
     

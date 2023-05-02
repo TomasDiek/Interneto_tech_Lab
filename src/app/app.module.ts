@@ -49,6 +49,8 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
 import { DatePipe } from '@angular/common';
 import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { UpdatePropertyComponent } from './components/update-property/update-property.component';
+import { UpdatePageComponent } from './pages/update-page/update-page.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { FileUploadModule } from 'ng2-file-upload';
     RegisterComponent,
     FilterPipe,
     SortPipe,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    UpdatePropertyComponent,
+    UpdatePageComponent
   ],
   imports: [
     BrowserModule,
