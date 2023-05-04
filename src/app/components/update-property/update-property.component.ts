@@ -36,6 +36,10 @@ export class UpdatePropertyComponent implements OnInit  {
 
   ngOnInit(): void {
     alertify.set('notifier','position', 'top-right');
+    if(!localStorage.getItem('userName')){
+      alertify.error('You must be looged in to add a property')
+      this.router.navigate(['/entry/login']);
+    }
     this.propertyService.getAllCities().subscribe(data=>{
       this.cityList=data;
     });
@@ -65,9 +69,10 @@ export class UpdatePropertyComponent implements OnInit  {
     const propertyTypeId = this.propertyTypes.find(p => p.name === this.property.propertyType)?.id;
     const furnishingTypeId = this.furnishTypes.find(p => p.name === this.property.furnishingType)?.id;
     const cityId = this.cityList.find(p => p.name === this.property.city)?.id;
+    console.log("REA",this.property.readyToMove)
     this.updatePropertyForm=this.fb.group({
       BasicInformation: this.fb.group({
-        SellRent:[null, Validators.required],
+        SellRent:[this.property.sellRent,Validators.required],
         PType:[propertyTypeId,Validators.required],
         FType:[furnishingTypeId,Validators.required],
       }),
@@ -80,36 +85,36 @@ export class UpdatePropertyComponent implements OnInit  {
         City:[cityId,Validators.required],
       }),
       OtherInformation:this.fb.group({
-        TotalFloor: [this.property?.totalFloors],
-        RTM: [this.property.readyToMove, Validators.required],
-        PossessionOn: [this.property?.estPossessionOn, Validators.required],
-        AOP: [this.property?.age],
+        TotalFloor: [this.property.totalFloors],
+        RTM: [this.property.readyToMove.toString(), Validators.required],
+        PossessionOn: [this.property.estPossessionOn, Validators.required],
+        AOP: [this.property.age],
         Description: [this.property?.description]
       })
     })
   }
+  clicked(){
+    console.log("ASD",this.property.sellRent)
+    console.log("sa",this.property.propertyType)
+  }
   onSubmit(){
     this.nextClicked=true;
-    console.log(this.property)
-    // if(this.tabsValid()){
-    //   this.mapProperty();
-    //   this.propertyService.addProperty(this.property).subscribe(
-    //     () =>{
-    //       alertify.success("Congrats, your property has been successfully listed");
-    //       // console.log(this.updatePropertyForm);
-    //       if(this.SellRent.value==='2'){
-    //         this.router.navigate(['entry/rent'])
-    //       }
-    //       else{
-    //         this.router.navigate(['entry/buy']);
-    //       }
-    //     });
-    // }
-    // else{
-    //   alertify.error("Please provide all the required fields");
-    // }
-    //console.log('SellRent='+this.updatePropertyForm.value.BasicInformation.SellRent);
-    
+    if(this.tabsValid()){
+      this.mapProperty();
+      console.log(this.property)
+      this.propertyService.updateProperty(this.property).subscribe(
+        () =>{
+          alertify.success("Congrats, your property has been successfully updated");
+          // console.log(this.updatePropertyForm);
+          this.router.navigate(['/entry/detailView/'+this.property.id]);          
+        },
+        error=>{
+          alertify.error("You are not authorized to make changes");
+        });
+    }
+    else{
+      alertify.error("Please provide all the required fields");
+    }    
   }
   // FormGroups
   get BasicInformation(){
@@ -127,8 +132,8 @@ export class UpdatePropertyComponent implements OnInit  {
     return this.updatePropertyForm.controls.OtherInformation as FormGroup;
   }
   // Basic
-  get SellRent(): FormControl | null {
-    return this.BasicInformation.get('SellRent') as FormControl;
+  get SellRent(){
+    return this.BasicInformation.controls.SellRent as FormControl;
   }
   
 
@@ -175,7 +180,7 @@ export class UpdatePropertyComponent implements OnInit  {
   mapProperty(): void {
     this.property.id = this.property.id;
     // @ts-ignore: Object is possibly 'null'.
-    this.property.sellRent = +this.SellRent.value;
+    this.property.sellRent = this.property.sellRent;
     this.property.propertyTypeId = this.PType.value;
     this.property.CityId = this.City.value;
     this.property.furnishingTypeId = this.FType.value;
@@ -218,5 +223,8 @@ export class UpdatePropertyComponent implements OnInit  {
     if (IsCurrentTabValid) {
       this.formTabs.tabs[NextTabId].active = true;
     }
+  }
+  onBack(){
+    this.router.navigate(['/entry/detailView/'+this.property.id]);
   }
 }

@@ -7,21 +7,27 @@
                         <form (ngSubmit)="onSubmit()" [formGroup]="updatePropertyForm">
                             <div class="tab-panel">
                                 <tabset class="member-tabset" #formTabs>
-                                    <tab heading="Basic Information"  formGroupName="BasicInformation">
-                                        
+                                    <tab heading="Basic Information"  formGroupName="BasicInformation">                                        
                                         <div class="form-group col-12">
                                             <p>I want to</p>
-                                            <div class="btn-group" btnRadioGroup formControlName="SellRent" >
-                                                <label
+                                            <div class="btn-group" btnRadioGroup formControlName="SellRent">
+                                              <label
                                                 *ngFor="let item of wantTo"
-                                                class="btn btn-outline-primary me-2" 
-                                                [btnRadio]="item.id" tabindex="0" role="button" name="SellRent" (click)="property.sellRent=item.id" [value]="property.sellRent">{{item.name}}</label>
-                                            </div> 
-                                            <div class="error-block" *ngIf="SellRent &&(SellRent.invalid && nextClicked)">
-                                                Please select what 
+                                                class="btn btn-outline-primary me-2"
+                                                [btnRadio]="item.id"
+                                                tabindex="0"
+                                                role="button"
+                                                name="SellRent"
+                                                (click)="property.sellRent=item.id;"
+                                                [class.active]="property.sellRent === item.id">
+                                                {{item.name}}
+                                              </label>
                                             </div>
-                                        </div>
-                                        
+                                          
+                                            <div class="error-block" *ngIf="SellRent && (SellRent.invalid && nextClicked)">
+                                              Please select what
+                                            </div>
+                                          </div>
                                         
                                         <div class="form-group col-12">
                                             <p>Property Type</p>
@@ -160,7 +166,7 @@
                                             <button type="button" class="btn btn-primary"
                                             (click)="selectTab(3, true)">Back</button>
                                             <button type="submit" class="btn btn-primary">Save</button>
-                                            <button type="reset" class="btn btn-primary">Cancel</button>
+                                            <button  class="btn btn-primary" (click)="onBack()">Cancel</button>
                                         </div>
                                     </tab>
                                 </tabset>
