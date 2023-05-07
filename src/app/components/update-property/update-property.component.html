@@ -2,7 +2,7 @@
     <div class="row mb-5">
         <div class="col-8 shadow-lg p-0 bg-white" id="form">
                 <div class="card">
-                    <div class="card-header"><h3>Add New Property</h3></div>
+                    <div class="card-header"><h3>Update Property</h3></div>
                     <div class="card-body">
                         <form (ngSubmit)="onSubmit()" [formGroup]="updatePropertyForm">
                             <div class="tab-panel">
@@ -167,6 +167,11 @@
                                             (click)="selectTab(3, true)">Back</button>
                                             <button type="submit" class="btn btn-primary">Save</button>
                                             <button  class="btn btn-primary" (click)="onBack()">Cancel</button>
+                                        </div>
+                                    </tab>
+                                    <tab heading="Delete">
+                                        <div class="col-12 mt-2 d-grid gap-2 m-auto">
+                                            <button type="button" class="btn btn-danger" (click)="deleteProperty()">Delete Property</button>
                                         </div>
                                     </tab>
                                 </tabset>

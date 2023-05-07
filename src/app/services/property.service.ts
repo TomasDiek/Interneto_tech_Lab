@@ -43,6 +43,15 @@ export class PropertyService {
       };
       return this.http.post(this.baseUrl + 'property/add', property, httpOptions);
   }
+  deleteProperty(id:number){
+    const httpOptions = {
+        headers: new HttpHeaders({
+            Authorization: 'Bearer '+ localStorage.getItem('token')
+        })
+    };
+    return this.http.delete(this.baseUrl + 'property/delete/'
+          +String(id), httpOptions);
+  }
   updateProperty(property:Property){
     const httpOptions = {
         headers: new HttpHeaders({

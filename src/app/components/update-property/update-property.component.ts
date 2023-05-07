@@ -93,9 +93,13 @@ export class UpdatePropertyComponent implements OnInit  {
       })
     })
   }
-  clicked(){
-    console.log("ASD",this.property.sellRent)
-    console.log("sa",this.property.propertyType)
+  deleteProperty(){
+    this.propertyService.deleteProperty(this.property.id).subscribe(
+      () =>{
+        alertify.success("Congrats, your property has been deleted");
+        // console.log(this.updatePropertyForm);
+        this.router.navigate(['/entry/buy']);          
+      });
   }
   onSubmit(){
     this.nextClicked=true;
