@@ -34,34 +34,34 @@ export class UpdatePropertyComponent implements OnInit  {
   
   constructor(private datePipe: DatePipe,private fb: FormBuilder,private route:ActivatedRoute, private router:Router, private propertyService:PropertyService){}
 
-  ngOnInit(): void {
-    alertify.set('notifier','position', 'top-right');
-    if(!localStorage.getItem('userName')){
-      alertify.error('You must be looged in to add a property')
+  async ngOnInit(): Promise<void> {
+    alertify.set('notifier', 'position', 'top-right');
+    if (!localStorage.getItem('userName')) {
+      alertify.error('You must be logged in to add a property');
       this.router.navigate(['/entry/login']);
     }
-    this.propertyService.getAllCities().subscribe(data=>{
-      this.cityList=data;
-    });
-    this.propertyService.getPropertyTypes().subscribe(data => {
-      this.propertyTypes = data;
-      console.log(this.propertyTypes)
-    });
-
-    this.propertyService.getFurnishingTypes().subscribe(data => {
-        this.furnishTypes = data;
-    });
-    this.route.params.subscribe(
-      (params) => {
+  
+    try {
+      // @ts-ignore: Object is possibly 'null'.
+      this.cityList = await this.propertyService.getAllCities().toPromise();
+      // @ts-ignore: Object is possibly 'null'.
+      this.propertyTypes = await this.propertyService.getPropertyTypes().toPromise();
+      // @ts-ignore: Object is possibly 'null'.
+      this.furnishTypes = await this.propertyService.getFurnishingTypes().toPromise();
+  
+      this.route.params.subscribe((params) => {
         this.propertyId = +params['id'];
         this.propertyService.getProperty(this.propertyId).subscribe(
           (data: Property) => {
             this.property = data;
             this.CreateUpdatePropertyForm();
-          }, error=> this.router.navigate(['entry/buy'])
+          },
+          (error) => this.router.navigate(['entry/buy'])
         );
-      }
-    );
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Form:NgForm
