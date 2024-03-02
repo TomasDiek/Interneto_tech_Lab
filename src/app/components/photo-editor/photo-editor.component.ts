@@ -34,42 +34,42 @@ export class PhotoEditorComponent implements OnInit {
         this.hasBaseDropZoneOver = e;
     }
 
-    initializeFileUploader() {
-        this.uploader = new FileUploader({
-            url: this.baseUrl +'property/add/photo/'+ String(this.property.id),
-            authToken: 'Bearer '+ localStorage.getItem('token'),
-            isHTML5: true,
-            allowedFileType: ['image'],
-            removeAfterUpload: true,
-            autoUpload: true,
-            maxFileSize:this.maxAllowedFileSize
-        });
-        console.log("uploader",this.uploader)
-        this.uploader.onAfterAddingFile = (file) => {
-            file.withCredentials = false;
-        };
+  initializeFileUploader() {
+      this.uploader = new FileUploader({
+          url: this.baseUrl +'property/add/photo/'+ String(this.property.id),
+          authToken: 'Bearer '+ localStorage.getItem('token'),
+          isHTML5: true,
+          allowedFileType: ['image'],
+          removeAfterUpload: true,
+          autoUpload: true,
+          maxFileSize:this.maxAllowedFileSize
+      });
+      console.log("uploader",this.uploader)
+      this.uploader.onAfterAddingFile = (file) => {
+          file.withCredentials = false;
+      };
 
-        this.uploader.onSuccessItem = (item, response, status, headers) => {
-            if (response) {
-                const photo = JSON.parse(response);
-                // @ts-ignore: Object is possibly 'null'.
-                this.property.photos.push(photo);
-            }
-        };
+      this.uploader.onSuccessItem = (item, response, status, headers) => {
+          if (response) {
+              const photo = JSON.parse(response);
+              // @ts-ignore: Object is possibly 'null'.
+              this.property.photos.push(photo);
+          }
+      };
 
-        this.uploader.onErrorItem = (item, response, status, headers) => {
-            let errorMessage = 'Some unknown error occured';
-            if (status===401) {
-                errorMessage ='Your session has expired, login again';
-            }
+      this.uploader.onErrorItem = (item, response, status, headers) => {
+          let errorMessage = 'Some unknown error occured';
+          if (status===401) {
+              errorMessage ='Your session has expired, login again';
+          }
 
-            if (response) {
-                errorMessage = response;
-            }
+          if (response) {
+              errorMessage = response;
+          }
 
-           alertify.error(errorMessage);
-        };
-    }
+          alertify.error(errorMessage);
+      };
+  }
   mainPhotoChanged(url: string){
     this.mainPhotoChangedEvent.emit(url);
   }

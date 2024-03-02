@@ -18,7 +18,6 @@ export class AuthService {
         userName:user.userName,
         password:user.userPassword,
     }
-    console.log("register",temp)
     return this.http.post(this.baseUrl + 'Account/register', temp);
 }
 }

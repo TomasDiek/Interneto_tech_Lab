@@ -76,7 +76,7 @@ export class CreateListingComponent implements OnInit {
       }),
       OtherInformation:this.fb.group({
         TotalFloor: [null],
-        RTM: [null, Validators.required],
+        RTM: [true, Validators.required],
         PossessionOn: [null, Validators.required],
         AOP: [null],
         Description: [null]
