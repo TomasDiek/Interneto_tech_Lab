@@ -1,17 +1,105 @@
-@media only screen and (max-width: 420px)  {
-    #buttons{
-        display: grid;
+
+::ng-deep.login_screen {
+    background-color: #2148C0;
+    background-image:url('/assets/images/BG.png');
+    background-size: cover;
+    background-position: center;  
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    #LoginBtn{
+        border-color: white;
     }
-    #buttons button{
-        margin-left: 0 !important;
+    #LoginBtn:hover{
+        font-size: 1.25rem !important;
+        background-color: #2b50c0 !important;
     }
-    #buttons #cancel{
-        margin-top: 8px;
+    a{
+      text-decoration: none;
+      color: white;
     }
-}
-@media only screen and (min-width: 1200px)  {
-    .row{
-        max-width: 1000px !important;
-        margin: auto;
+    a:hover{
+      font-size: 1.05rem !important;
     }
-}
+    &__logo{
+          width: 200px;
+          margin-bottom: 1rem;
+      }
+      &__input{
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+          .p-input-icon-left{
+              margin-top: 10px;
+          }
+          .p-inputtext{
+              box-sizing: border-box;
+              width: 300px;
+              height: 44.24px;
+              left: 490px;
+              top: 330px;
+              color: white;
+              border: 1px solid #FFFFFF;
+              border-radius: 4px; 
+              background-color: rgba($color: #000000, $alpha: 0);
+              outline: none;
+              &::placeholder{
+                  color:white ;
+              }
+         
+          } 
+          button{
+          width: 300px;
+          height: 44.24px;
+          color: white;
+          margin-top: 20px;
+  
+          }
+      }
+    
+      &__singup_link{
+          text-decoration: none;
+          color: white;
+          margin-top: 15px;
+      }
+      @media (max-width: 330px){
+          &__input{
+              .p-inputtext{
+                  width: 150px;
+                  height: 44.24px;
+              }
+          }
+          button{
+              width: 150px;
+              height: 44.24px;
+          }
+          &__logo{
+              width: 100px;
+              margin-bottom: 0.5rem;
+          }
+      }
+      @media (max-height: 330px){
+          &__logo{display: none;}
+      }
+  }
+  
+// @media only screen and (max-width: 420px)  {
+//     #buttons{
+//         display: grid;
+//     }
+//     #buttons button{
+//         margin-left: 0 !important;
+//     }
+//     #buttons #cancel{
+//         margin-top: 8px;
+//     }
+// }
+// @media only screen and (min-width: 1200px)  {
+//     .row{
+//         max-width: 1000px !important;
+//         margin: auto;
+//     }
+// }

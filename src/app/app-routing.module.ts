@@ -16,12 +16,12 @@ import { UpdatePageComponent } from './pages/update-page/update-page.component';
 
 const routes: Routes = [
 
-  {path:'',redirectTo:'entry/login',pathMatch:'full'},
+  {path:'',redirectTo:'login',pathMatch:'full'},
   // canActivate:[AuthGuard]
   {path:'entry',component:EntryPageComponentComponent,children:
   [
     {path: 'reset-password',component: PasswordResetPageComponent},
-    {path:'login',component:LoginPageComponent},
+    
     {path:'signUp',component:SignUpPageComponent},
     // {path:'home',component:HomePageComponent},
     {path:'update/:id',component:UpdatePageComponent},
@@ -30,7 +30,8 @@ const routes: Routes = [
     {path:'createOrEdit',component:CreateOrEditPageComponent},
     {path:'detailView/:id',component:ViewPageComponent}
   ]},
-  {path:'**',component:NotFoundPageComponent}
+  {path:'login',component:LoginPageComponent},
+  {path:'**',component:NotFoundPageComponent},
 ];
 
 @NgModule({
